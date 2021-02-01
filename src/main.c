@@ -10,8 +10,8 @@
 
 int main()
 {
-	printf("Hello from C-Finite State Machine.\n");
-	printf("This FSM follows a sequence of 5 states, from 0 to 4.\n\n");
+	printf("Hello from C-Finite State Machine-v2.\n");
+	printf("This FSM follows a non-linear sequence of 8 states, from 0 to 7.\n\n");
 
 	// Initialize array of structure with states, events, and the proper handler
 	s_FSM fsm [] =

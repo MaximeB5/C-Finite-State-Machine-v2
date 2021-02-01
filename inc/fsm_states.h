@@ -10,13 +10,16 @@
 // Defines
     // None for the moment.
 
-typedef enum
+typedef enum SystemState
 {
-    Idle_State,
-    Card_Inserted_State,
-    Pin_Eentered_State,
-    Option_Selected_State,
-    Amount_Entered_State,
+    P1,
+    P2,
+    P3,
+    P4,
+    P5,
+    P6,
+    P7,
+    P8,
     last_State
 } eSystemState;
 
@@ -25,19 +28,14 @@ typedef enum
 typedef eSystemState (*pf_eventHandler)(void);
 
 
-// Function call to dispatch the amount and return the ideal state
-eSystemState amount_dispatch_handler(void)  {   printf("Event called is '%s'\n\n", __FUNCTION__);   return Idle_State;              }
-
-// Function call to processing track data and return card inserted state
-eSystemState insert_card_handler(void)      {   printf("Event called is '%s'\n\n", __FUNCTION__);   return Card_Inserted_State;     }
-
-// Function call to enter the pin and return pin entered state
-eSystemState enter_pin_handler(void)        {   printf("Event called is '%s'\n\n", __FUNCTION__);   return Pin_Eentered_State;      }
-
-// Function call to option select and return the option selected state
-eSystemState option_selection_handler(void) {   printf("Event called is '%s'\n\n", __FUNCTION__);   return Option_Selected_State;   }
-
-// Function call to Enter amount and return amount entered state
-eSystemState enter_amount_handler(void)     {   printf("Event called is '%s'\n\n", __FUNCTION__);   return Amount_Entered_State;    }
+// Event handlers
+eSystemState p1_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P1; }
+eSystemState p2_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P2; }
+eSystemState p3_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P3; }
+eSystemState p4_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P4; }
+eSystemState p5_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P5; }
+eSystemState p6_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P6; }
+eSystemState p7_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P7; }
+eSystemState p8_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P8; }
 
 #endif // FSM_STATES_H
