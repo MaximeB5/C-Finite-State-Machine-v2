@@ -13,19 +13,44 @@ int main()
 	printf("Hello from C-Finite State Machine-v2.\n");
 	printf("This FSM follows a non-linear sequence of 8 states. There are 5 events, from 4 to 8.\n\n");
 
-	// Initialize array of structure with states, events, and the proper handler
-	s_FSM fsm [] =
+	// Declare all the transitions that compose the FSM.
+	// Linear means this is a direct and logical link between each state, non-linear means there are several options.
+	// Linear						
+	Transition trans_1_2;
+	Transition trans_2_3;
+
+	// Non-linear
+	Transition trans_3_4;
+	Transition trans_3_5;
+	Transition trans_3_6;
+
+	// Linear
+	Transition trans_4_3;
+	Transition trans_5_2;
+
+	// Non-linear
+	Transition trans_6_7;
+	Transition trans_6_8;
+
+	// Linear
+	Transition trans_7_3;
+	Transition trans_8_2;
+
+	// Initialize each transition
+	initialize(&trans_1_2, P1, 1);	// TODO : jsais pas si c'est une bonne idée ou pas, mais go ajouter à la fonction 2 listse d'arguments variables pour les events et leurs handlers associés
+
+
+	// Create the FSM
+	Transition FSM [] =
 	{
-		{Idle_State,			Card_Insert_Event,		insert_card_handler},
-		{Card_Inserted_State,	Pin_Enter_Event,		enter_pin_handler},
-		{Pin_Eentered_State,	Option_Selection_Event,	option_selection_handler},
-		{Option_Selected_State,	Amount_Enter_Event,		enter_amount_handler},
-		{Amount_Entered_State,	Amount_Dispatch_Event,	amount_dispatch_handler}
+		/*{Idle_State,			Card_Insert_Event,		insert_card_handler},*/
+		
 	};
 
-	eSystemState next_state = Idle_State;
+	// Init with the 1st state
+	eSystemState next_state = P1;
 
-	// Working loop
+	// Working loop			// TODO
 	while(1)
 	{
 		// Get event
@@ -34,12 +59,12 @@ int main()
 
         if(		(next_state < last_State)
 			&&	(eNewEvent < last_Event)
-			&&	(fsm[next_state].event == eNewEvent)
-			&&	(fsm[next_state].event_handler != NULL)
+			&&	(FSM[next_state].events == eNewEvent)
+			&&	(FSM[next_state].event_handlers != NULL)
 		)
 		{
             // Function call as per the state and event and return the next state of the finite state machine
-            next_state = (*fsm[next_state].event_handler)();
+            next_state = (*FSM[next_state].event_handlers)();
 		}
         else
 		{
@@ -47,15 +72,8 @@ int main()
 		}
 	}
 
+	// Free the memory of each transition
+		// TODO
+
 	return(0);
-
-	/*
-		Après, tu vois en fonction de ce que tu veux faire, mais soit:
-		
-		- Tu mets le "menu" dans le programme principal, et tu transmets un eSystemState à la FSM au travers d'un handler,
-			et c'est l'état qui est derrière qui va choisir si la valeur entrée est valide ou pas et quel est l'état suivant;
-
-		- Ou bien tu mets la lecture dans une fonction que tu appelle dans chaque état, ce qui a pour conséquence que ta FSM a un
-			périmètre plus important dans ton programme et prend en charge plus de fonctionnalités que la simple gestion d'une logique.
-	*/
 }

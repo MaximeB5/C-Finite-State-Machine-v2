@@ -29,13 +29,13 @@ typedef eSystemState (*pf_eventHandler)(void);
 
 
 // Event handlers
-eSystemState p1_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P1; }
-eSystemState p2_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P2; }
-eSystemState p3_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P3; }
-eSystemState p4_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P4; }
-eSystemState p5_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P5; }
-eSystemState p6_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P6; }
-eSystemState p7_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P7; }
-eSystemState p8_handler(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P8; }
+eSystemState ret_p1(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P1; }
+eSystemState ret_p2(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P2; }
+eSystemState ret_p3(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P3; }
+eSystemState ret_p4(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P4; }
+eSystemState ret_p5(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P5; }
+eSystemState ret_p6(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P6; }
+eSystemState ret_p7(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P7; }
+eSystemState ret_p8(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P8; }
 
 #endif // FSM_STATES_H

@@ -10,12 +10,24 @@
 // Defines
     // None for the moment.
 
-// Structure of state and event with event handler
-typedef struct
+/**
+ * @brief This struct represents a non-linear FSM
+ * @param state the current state
+ * @param nb_of_events the number of events, that's the memory size that'll be allocated for events and event_handlers
+ * @param events the events dynamically allocated
+ * @param event_handlers the event handlers dynamically allocated
+ * 
+ */
+typedef struct FSM
 {
-    eSystemState        state;
-    eSystemEvent        event;
-    pf_eventHandler     event_handler;
-} s_FSM;
+    eSystemState        _state;
+    unsigned int        _nb_of_events;
+    eSystemEvent*       _events;
+    pf_eventHandler*    _event_handlers;
+} Transition;
+
+// Functions
+void initialize (Transition * transition, const eSystemState state, const unsigned int nb_event);
+void destroy    (Transition * transition);
 
 #endif // FSM_H
