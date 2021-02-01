@@ -16,6 +16,7 @@ eSystemEvent read_event(void)
 
     char line[LINE_SIZE];
 
+    // Fgets error
     if( fgets(line, LINE_SIZE, stdin) == NULL )
     {
         printf("\t\t--- ERROR EOF STDIN (1) in read_event ---");
@@ -26,6 +27,8 @@ eSystemEvent read_event(void)
     sprintf(format, "%%d");
 
     int user_input;
+
+    // Invalid user input
     if( sscanf(line, format, &user_input) != NB_OF_VAL)
     {
         printf("\t\t--- ERROR Invalid User Input in read_event ---");
@@ -39,6 +42,7 @@ eSystemEvent read_event(void)
         do { c =getchar(); } while(c != '\n');
     }
 
+    // Input stream error
     if( feof(stdin) )
     {
         printf("\t\t--- ERROR EOF STDIN (2) in read_event ---");
@@ -47,27 +51,32 @@ eSystemEvent read_event(void)
 
     switch (user_input)
     {
-    case 0:
-        return Card_Insert_Event;
-        break;
-    
-    case 1:
-        return Pin_Enter_Event;
-        break;
-    
-    case 2:
-        return Option_Selection_Event;
-        break;
-    case 3:
-        return Amount_Enter_Event;
-        break;
+        case 4:
+            return E4;
+            break;
 
-    case 4:
-        return Amount_Dispatch_Event;
-        break;
-    
-    default:
-        return last_Event;
-        break;
+        case 5:
+            return E5;
+            break;
+        
+        case 6:
+            return E6;
+            break;
+
+        case 7:
+            return E7;
+            break;
+
+        case 8:
+            return E8;
+            break;
+
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+        default:
+            return last_Event;
+            break;
     }
 }

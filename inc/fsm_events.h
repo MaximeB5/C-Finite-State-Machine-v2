@@ -8,19 +8,19 @@
     // None for the moment.
 
 // Defines
-#define LINE_SIZE 3
-#define NB_OF_VAL 1
+    // None for the moment.
 
-typedef enum
+typedef enum SystemEvent
 {
-    Card_Insert_Event,
-    Pin_Enter_Event,
-    Option_Selection_Event,
-    Amount_Enter_Event,
-    Amount_Dispatch_Event,
+	E4,
+    E5,
+    E6,
+    E7,
+    E8,
     last_Event
 } eSystemEvent;
 
+// Functions
 eSystemEvent read_event(void);
 
 #endif // FSM_EVENTS_H

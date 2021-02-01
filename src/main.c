@@ -11,7 +11,7 @@
 int main()
 {
 	printf("Hello from C-Finite State Machine-v2.\n");
-	printf("This FSM follows a non-linear sequence of 8 states, from 0 to 7.\n\n");
+	printf("This FSM follows a non-linear sequence of 8 states. There are 5 events, from 4 to 8.\n\n");
 
 	// Initialize array of structure with states, events, and the proper handler
 	s_FSM fsm [] =
