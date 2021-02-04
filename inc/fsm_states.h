@@ -2,14 +2,15 @@
 #define FSM_STATES_H
 
 // My Includes
-    // None for the moment.
+    // None.
 
 // Includes
-#include <stdio.h>
+    // None.
 
 // Defines
-    // None for the moment.
+    // None.
 
+// States of the FSM
 typedef enum SystemState
 {
     P1,
@@ -28,14 +29,15 @@ typedef enum SystemState
 typedef eSystemState (*pf_eventHandler)(void);
 
 
+// Functions
 // Event handlers
-eSystemState ret_p1(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P1; }
-eSystemState ret_p2(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P2; }
-eSystemState ret_p3(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P3; }
-eSystemState ret_p4(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P4; }
-eSystemState ret_p5(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P5; }
-eSystemState ret_p6(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P6; }
-eSystemState ret_p7(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P7; }
-eSystemState ret_p8(void) { printf("Event called is '%s'\n\n", __FUNCTION__);   return P8; }
+eSystemState ret_p1(void);
+eSystemState ret_p2(void);
+eSystemState ret_p3(void);
+eSystemState ret_p4(void);
+eSystemState ret_p5(void);
+eSystemState ret_p6(void);
+eSystemState ret_p7(void);
+eSystemState ret_p8(void);
 
 #endif // FSM_STATES_H

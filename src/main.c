@@ -6,7 +6,7 @@
 #include <stdlib.h>
 
 // My Defines
-	// None for the moment.
+#define FSM_SIZE 11
 
 int main()
 {
@@ -15,38 +15,55 @@ int main()
 
 	// Declare all the transitions that compose the FSM.
 	// Linear means this is a direct and logical link between each state, non-linear means there are several options.
-	// Linear						
-	Transition trans_1_2;
-	Transition trans_2_3;
+	// For a better readibility and to avoid 'oups I forgot to init this one' issue, I suggest to initialize each Transition right after declaring it.
+	// Linear
+	Transition trans_1_2;	initialize(&trans_1_2, P1, 1, NO_EVENT, ret_p2);
+	Transition trans_2_3;	initialize(&trans_2_3, P2, 1, NO_EVENT, ret_p3);
 
 	// Non-linear
-	Transition trans_3_4;
-	Transition trans_3_5;
-	Transition trans_3_6;
+	Transition trans_3_4;	initialize(&trans_3_4, P3, 1, E4, ret_p4);
+	Transition trans_3_5;	initialize(&trans_3_5, P3, 1, E5, ret_p5);
+	Transition trans_3_6;	initialize(&trans_3_6, P3, 1, E6, ret_p6);
 
 	// Linear
-	Transition trans_4_3;
-	Transition trans_5_2;
+	Transition trans_4_3;	initialize(&trans_4_3, P4, 1, NO_EVENT, ret_p3);
+	Transition trans_5_2;	initialize(&trans_5_2, P5, 1, NO_EVENT, ret_p2);
 
 	// Non-linear
-	Transition trans_6_7;
-	Transition trans_6_8;
+	Transition trans_6_7;	initialize(&trans_6_7, P6, 1, E7, ret_p7);
+	Transition trans_6_8;	initialize(&trans_6_8, P6, 1, E8, ret_p8);
 
 	// Linear
-	Transition trans_7_3;
-	Transition trans_8_2;
-
-	// Initialize each transition
-	initialize(&trans_1_2, P1, 1);	// TODO : jsais pas si c'est une bonne idée ou pas, mais go ajouter à la fonction 2 listse d'arguments variables pour les events et leurs handlers associés
+	Transition trans_7_3;	initialize(&trans_7_3, P7, 1, NO_EVENT, ret_p3);
+	Transition trans_8_2;	initialize(&trans_8_2, P8, 1, NO_EVENT, ret_p2);
 
 
 	// Create the FSM
-	Transition FSM [] =
+	Transition FSM [FSM_SIZE] =
 	{
-		/*{Idle_State,			Card_Insert_Event,		insert_card_handler},*/
-		
-	};
+		// Linear
+		trans_1_2,
+		trans_2_3,
 
+		// Non-linear
+		trans_3_4,
+		trans_3_5,
+		trans_3_6,
+
+		// Linear
+		trans_4_3,
+		trans_5_2,
+
+		// Non-linear
+		trans_6_7,
+		trans_6_8,
+
+		// Linear
+		trans_7_3,
+		trans_8_2
+
+	};
+/*
 	// Init with the 1st state
 	eSystemState next_state = P1;
 
@@ -71,9 +88,13 @@ int main()
 			printf("--- invalid input ---\n\n");
 		}
 	}
-
+*/
 	// Free the memory of each transition
-		// TODO
+	unsigned int i = 0;
+	for(i = 0; i < FSM_SIZE; ++i) {
+		destroy( &FSM[i] );
+	}
 
+	// I hope you freed the memory you allocated before exiting the program, because if not, you'll enjoy your memory leaks all alone lmao.
 	return(0);
 }

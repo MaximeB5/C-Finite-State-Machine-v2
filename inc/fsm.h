@@ -7,6 +7,7 @@
 
 // Includes
     // None for the moment.
+
 // Defines
     // None for the moment.
 
@@ -27,7 +28,7 @@ typedef struct FSM
 } Transition;
 
 // Functions
-void initialize (Transition * transition, const eSystemState state, const unsigned int nb_event);
-void destroy    (Transition * transition);
+void initialize     (Transition * transition, const eSystemState state, const unsigned int nb_events, ...);
+void destroy        (Transition * transition);
 
 #endif // FSM_H

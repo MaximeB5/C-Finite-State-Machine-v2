@@ -10,8 +10,10 @@
 // Defines
     // None for the moment.
 
+// Events of the FSM
 typedef enum SystemEvent
 {
+    NO_EVENT,
 	E4,
     E5,
     E6,
@@ -19,6 +21,7 @@ typedef enum SystemEvent
     E8,
     last_Event
 } eSystemEvent;
+
 
 // Functions
 eSystemEvent read_event(void);
