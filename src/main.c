@@ -6,9 +6,9 @@
 #include <stdlib.h>
 
 // My Defines
-// For a FSM where all non-linear transitions are declared separately, just like the linear ones
+// For a FSM where all non-linear transitions are declared separately, just like the linear ones. This number depends on the number of transitions in the FSM.
 #define FSM_SIZE_V1 11
-// For a FSM where all non-linear group of transitions are set together
+// For a FSM where all non-linear group of transitions are set together. This number depends on the number of transitions in the FSM.
 #define FSM_SIZE_V2 8
 
 int main()
@@ -117,32 +117,63 @@ int main()
 
 	};
 	*/
-/*
-	// Init with the 1st state
+
+	// --- The FSM working logic is implemented below ---
+	// Init the FSM with the 1st state it'll begin with.
 	eSystemState next_state = P1;
 
-	// Working loop			// TODO
+	// Working loop : that's here we implements how we wants the FSM to work.
+	// We have 2 options at each iteration : either we have an event that must occurs, or we don't have one.
+	// This information is known thanks to the NO_EVENT value.
+	
+	// TODO : maybe remove the LAST_STATE and LAST_EVENT values ?
+	
 	while(1)
 	{
-		// Get event
-		eSystemEvent eNewEvent = read_event();
-		printf("State is %d\n", eNewEvent);
+	// --- START OF THE CODING AREA WHERE I CURRENTLY AM ---
+	// Global check if we're in a valid state and all.
+	if(   next_state < last_State 			// For whatever obscure reasons the state goes beyond the limits of the tab that is the FSM.
+	   && FSM[next_state]._event_handlers != NULL	// If we try to access a state that has be freed, the handlers aren't valid anymore.
+	   /* some other checks maybe */ )
+	{
+		// If we have an event to deal with, we have to read it and check its value is valid.
+		if( FSM[next_state]._state != NO_EVENT )
+		{
+			// Get the event.
+			eSystemEvent eNewEvent = read_event();
+			// printf("State is %d\n", eNewEvent); // Debug
 
-        if(		(next_state < last_State)
-			&&	(eNewEvent < last_Event)
-			&&	(FSM[next_state].events == eNewEvent)
-			&&	(FSM[next_state].event_handlers != NULL)
-		)
-		{
-            // Function call as per the state and event and return the next state of the finite state machine
-            next_state = (*FSM[next_state].event_handlers)();
+			// Check if the event exists for the current transition.
+			if( eNewEvent < last_Event	// For whatever obscure reasons the event goes beyond the limits of the tab that is the FSM.
+			   /* some other checks maybe, like if the event exists for the current transition. */ )
+			{
+				// TODO
+
+				// If the event exists, call the correct handler and update the next_state variable.
+				// with something like that : (to be updated of course, this is only valid for the NO_EVENT case below)
+				// next_state = (*FSM[next_state]._event_handlers)();
+			}
+			// Invalid event as input.
+			else
+			{
+				printf("--- Invalid Event Input ---\n\n");
+			}
 		}
-        else
+		// Else, we just call the current event handler that'll do its work before leading to the next state.
+		// We do not have to wait for a specific event since there is none to wait. 
+		else
 		{
-			printf("--- invalid input ---\n\n");
+			// Update the next state variable with the value returned by the handler.
+			next_state = (*FSM[next_state]._event_handlers)();
 		}
 	}
-*/
+	else
+	{
+		printf("--- Global Check failed ---\n\n");
+	}
+
+	// --- END OF THE CODING AREA WHERE I CURRENTLY AM ---
+
 	// Free the memory of each transition
 	unsigned int i = 0;
 	for(i = 0; i < FSM_SIZE_V1; ++i) {
