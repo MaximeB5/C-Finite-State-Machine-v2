@@ -6,7 +6,10 @@
 #include <stdlib.h>
 
 // My Defines
-#define FSM_SIZE 11
+// For a FSM where all non-linear transitions are declared separately, just like the linear ones
+#define FSM_SIZE_V1 11
+// For a FSM where all non-linear group of transitions are set together
+#define FSM_SIZE_V2 8
 
 int main()
 {
@@ -16,6 +19,10 @@ int main()
 	// Declare all the transitions that compose the FSM.
 	// Linear means this is a direct and logical link between each state, non-linear means there are several options.
 	// For a better readibility and to avoid 'oups I forgot to init this one' issue, I suggest to initialize each Transition right after declaring it.
+	
+	// Comment the version of the FSM you want to use. By default, this code aims to play with the V1.
+	
+	/* This version uses FSM_SIZE_V1 */
 	// Linear
 	Transition trans_1_2;	initialize(&trans_1_2, P1, 1, NO_EVENT, ret_p2);
 	Transition trans_2_3;	initialize(&trans_2_3, P2, 1, NO_EVENT, ret_p3);
@@ -36,10 +43,32 @@ int main()
 	// Linear
 	Transition trans_7_3;	initialize(&trans_7_3, P7, 1, NO_EVENT, ret_p3);
 	Transition trans_8_2;	initialize(&trans_8_2, P8, 1, NO_EVENT, ret_p2);
+	
+	/* This version uses FSM_SIZE_V2 */
+	/*
+	// Linear
+	Transition trans_1_2;	initialize(&trans_1_2, P1, 1, NO_EVENT, ret_p2);
+	Transition trans_2_3;	initialize(&trans_2_3, P2, 1, NO_EVENT, ret_p3);
+
+	// Non-linear
+	Transition trans_3;	initialize(&trans_3_4, P3, 3, E4, E5, E6, ret_p4, ret_p5, ret_p6);
+
+	// Linear
+	Transition trans_4_3;	initialize(&trans_4_3, P4, 1, NO_EVENT, ret_p3);
+	Transition trans_5_2;	initialize(&trans_5_2, P5, 1, NO_EVENT, ret_p2);
+
+	// Non-linear
+	Transition trans_6;	initialize(&trans_6_7, P6, 2, E7, E8, ret_p7, ret_p8);
+
+	// Linear
+	Transition trans_7_3;	initialize(&trans_7_3, P7, 1, NO_EVENT, ret_p3);
+	Transition trans_8_2;	initialize(&trans_8_2, P8, 1, NO_EVENT, ret_p2);
+	*/
 
 
 	// Create the FSM
-	Transition FSM [FSM_SIZE] =
+	/* This version uses FSM_SIZE_V1 */
+	Transition FSM [FSM_SIZE_V1] =
 	{
 		// Linear
 		trans_1_2,
@@ -63,6 +92,31 @@ int main()
 		trans_8_2
 
 	};
+	
+	/* This version uses FSM_SIZE_V2 */
+	/*
+	Transition FSM [FSM_SIZE_V2] =
+	{
+		// Linear
+		trans_1_2,
+		trans_2_3,
+
+		// Non-linear
+		trans_3,
+
+		// Linear
+		trans_4_3,
+		trans_5_2,
+
+		// Non-linear
+		trans_6,
+
+		// Linear
+		trans_7_3,
+		trans_8_2
+
+	};
+	*/
 /*
 	// Init with the 1st state
 	eSystemState next_state = P1;
@@ -91,7 +145,7 @@ int main()
 */
 	// Free the memory of each transition
 	unsigned int i = 0;
-	for(i = 0; i < FSM_SIZE; ++i) {
+	for(i = 0; i < FSM_SIZE_V1; ++i) {
 		destroy( &FSM[i] );
 	}
 
