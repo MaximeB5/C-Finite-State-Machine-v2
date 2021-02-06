@@ -44,25 +44,46 @@ int main()
 	Transition trans_7_3;	initialize(&trans_7_3, P7, 1, NO_EVENT, ret_p3);
 	Transition trans_8_2;	initialize(&trans_8_2, P8, 1, NO_EVENT, ret_p2);
 	
-	/* This version uses FSM_SIZE_V2 */
+	/* This version uses FSM_SIZE_V2 (Test 1) */
 	/*
 	// Linear
 	Transition trans_1_2;	initialize(&trans_1_2, P1, 1, NO_EVENT, ret_p2);
 	Transition trans_2_3;	initialize(&trans_2_3, P2, 1, NO_EVENT, ret_p3);
 
 	// Non-linear
-	Transition trans_3;	initialize(&trans_3_4, P3, 3, E4, E5, E6, ret_p4, ret_p5, ret_p6);
+	Transition trans_3;		initialize(&trans_3, P3, 3, E4, E5, E6, ret_p4, ret_p5, ret_p6);
 
 	// Linear
 	Transition trans_4_3;	initialize(&trans_4_3, P4, 1, NO_EVENT, ret_p3);
 	Transition trans_5_2;	initialize(&trans_5_2, P5, 1, NO_EVENT, ret_p2);
 
 	// Non-linear
-	Transition trans_6;	initialize(&trans_6_7, P6, 2, E7, E8, ret_p7, ret_p8);
+	Transition trans_6;		initialize(&trans_6, P6, 2, E7, E8, ret_p7, ret_p8);
 
 	// Linear
 	Transition trans_7_3;	initialize(&trans_7_3, P7, 1, NO_EVENT, ret_p3);
 	Transition trans_8_2;	initialize(&trans_8_2, P8, 1, NO_EVENT, ret_p2);
+	*/
+
+	/* This version uses FSM_SIZE_V2 (Test 2) */
+	/*
+	// Linear
+	Transition trans_1;	initialize(&trans_1, P1, 1, NO_EVENT, ret_p2);
+	Transition trans_2;	initialize(&trans_2, P2, 1, NO_EVENT, ret_p3);
+
+	// Non-linear
+	Transition trans_3;	initialize(&trans_3, P3, 3, E4, E5, E6, ret_p4, ret_p5, ret_p6);
+
+	// Linear
+	Transition trans_4;	initialize(&trans_4, P4, 1, NO_EVENT, ret_p3);
+	Transition trans_5;	initialize(&trans_5, P5, 1, NO_EVENT, ret_p2);
+
+	// Non-linear
+	Transition trans_6;	initialize(&trans_6, P6, 2, E7, E8, ret_p7, ret_p8);
+
+	// Linear
+	Transition trans_7;	initialize(&trans_7, P7, 1, NO_EVENT, ret_p3);
+	Transition trans_8;	initialize(&trans_8, P8, 1, NO_EVENT, ret_p2);
 	*/
 
 
@@ -93,7 +114,7 @@ int main()
 
 	};
 	
-	/* This version uses FSM_SIZE_V2 */
+	/* This version uses FSM_SIZE_V2 (Test 1) */
 	/*
 	Transition FSM [FSM_SIZE_V2] =
 	{
@@ -114,6 +135,31 @@ int main()
 		// Linear
 		trans_7_3,
 		trans_8_2
+
+	};
+	*/
+
+	/* This version uses FSM_SIZE_V2 (Test 2) */
+	/*
+	Transition FSM [FSM_SIZE_V2] =
+	{
+		// Linear
+		trans_1,
+		trans_2,
+
+		// Non-linear
+		trans_3,
+
+		// Linear
+		trans_4,
+		trans_5,
+
+		// Non-linear
+		trans_6,
+
+		// Linear
+		trans_7,
+		trans_8
 
 	};
 	*/
