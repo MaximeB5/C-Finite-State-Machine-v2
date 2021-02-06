@@ -24,6 +24,11 @@ typedef enum SystemEvent
 
 
 // Functions
-eSystemEvent read_event(void);
+// Default read event
+eSystemEvent read_event     (void);
+
+// Customs read event
+eSystemEvent read_event_P3  (void);
+eSystemEvent read_event_P6  (void);
 
 #endif // FSM_EVENTS_H

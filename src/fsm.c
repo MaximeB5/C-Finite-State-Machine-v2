@@ -28,6 +28,7 @@ void initialize(Transition * transition, const eSystemState state, const unsigne
     transition->_events         = (eSystemEvent*)    malloc( sizeof(eSystemEvent)    * nb_events );
     transition->_event_handlers = (pf_eventHandler*) malloc( sizeof(pf_eventHandler) * nb_events );
     transition->_state          = state;
+    transition->_nb_of_events   = nb_events;
 
     va_list args;
     va_start(args, nb_events);
