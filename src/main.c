@@ -115,7 +115,8 @@ int main()
 				// Invalid event as input.
 				else
 				{
-					printf("--- Invalid Event Input ---\n\n");
+					printf("--- Invalid Event Input ---\nExit...\n\n");
+					break;
 				}
 			}
 			// Else, we just call the current event handler that'll do its work before leading to the next state.
@@ -128,7 +129,8 @@ int main()
 		}
 		else
 		{
-			printf("--- Global Check failed ---\n\n");
+			printf("--- Global Check failed ---\nExit...\n\n");
+			break;
 		}
 	} // End of the working loop.
 
