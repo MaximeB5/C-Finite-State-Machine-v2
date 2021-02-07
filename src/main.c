@@ -124,7 +124,7 @@ int main()
 			else
 			{
 				// Update the next state variable with the value returned by the handler.
-				next_state = (*FSM[next_state]._event_handlers[NO_EVENT])();
+				next_state = (*FSM[next_state]._event_handlers[0])();
 			}
 		}
 		else
