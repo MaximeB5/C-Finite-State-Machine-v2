@@ -110,8 +110,8 @@ int main()
 				}
 
 				// Check if the event exists for the current transition.
-				if( eNewEvent < last_Event		// For whatever obscure reasons the event goes beyond the limits of the tab that is the FSM.
-				&& event_index < last_Event	)	// If the event exists for the current transition.
+				if( eNewEvent < last_Event	// For whatever obscure reasons the event goes beyond the limits of the tab that is the FSM.
+				&& event_index < last_Event )	// If the event exists for the current transition.
 				{
 					// Update the next state variable with the value returned by the handler.
 					next_state = (*FSM[next_state]._event_handlers[event_index])();
