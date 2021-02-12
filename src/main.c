@@ -72,7 +72,7 @@ int main()
 	while(1)
 	{
 		// Global check if we're in a valid state and all.
-		if( next_state < last_State			// For whatever obscure reasons the state goes beyond the limits of the tab that is the FSM.
+		if( next_state < last_State						// For whatever obscure reasons the state goes beyond the limits of the tab that is the FSM.
 		&& FSM[next_state]._event_handlers != NULL )	// If we try to access a state that has be freed, the handlers aren't valid anymore.
 		{
 			// If we have an event to deal with, we have to read it and check its value is valid.
@@ -82,9 +82,9 @@ int main()
 				eSystemEvent eNewEvent;
 
 				// Add an if statement for each non-linear transition of your FSM.
-				if	(FSM[next_state]._state == P3)	eNewEvent = read_event_P3();
+				if		(FSM[next_state]._state == P3)	eNewEvent = read_event_P3();
 				else if	(FSM[next_state]._state == P6)	eNewEvent = read_event_P6();
-				else					eNewEvent = last_Event;	// Default case leading to an input error.
+				else									eNewEvent = last_Event;	// Default case leading to an input error.
 
 				// Debug.
 				printf("State is %d\n", eNewEvent);
@@ -110,7 +110,7 @@ int main()
 				}
 
 				// Check if the event exists for the current transition.
-				if( eNewEvent < last_Event	// For whatever obscure reasons the event goes beyond the limits of the tab that is the FSM.
+				if( eNewEvent < last_Event		// For whatever obscure reasons the event goes beyond the limits of the tab that is the FSM.
 				&& event_index < last_Event )	// If the event exists for the current transition.
 				{
 					// Update the next state variable with the value returned by the handler.
@@ -149,7 +149,8 @@ int main()
 
 	// Free the memory of each transition.
 	unsigned int i = 0;
-	for(i = 0; i < FSM_SIZE; ++i) {
+	for(i = 0; i < FSM_SIZE; ++i)
+	{
 		destroy( &FSM[i] );
 	}
 
