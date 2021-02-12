@@ -94,7 +94,7 @@ eSystemEvent read_event(void)
  */
 eSystemEvent read_event_P3(void)
 {
-    printf("Enter the number of the event :\n\t1 -> Go to transition P4\n\t2 -> Go to transition P5\n\t3 -> Go to transition P6\n\tother -> Error\n");
+    printf("Enter the number of the event :\n\t4 -> Go to transition P4\n\t5 -> Go to transition P5\n\t6 -> Go to transition P6\n\tother -> Error\n");
 
     char line[LINE_SIZE];
 
@@ -133,22 +133,22 @@ eSystemEvent read_event_P3(void)
 
     switch (user_input)
     {
-        case 1:
+        case 4:
             return E4;
             break;
 
-        case 2:
+        case 5:
             return E5;
             break;
         
-        case 3:
+        case 6:
             return E6;
             break;        
 
         case 0:
-        case 4:
-        case 5:
-        case 6:
+        case 1:
+        case 2:
+        case 3:
         case 7:
         case 8:
         default:
@@ -165,7 +165,7 @@ eSystemEvent read_event_P3(void)
  */
 eSystemEvent read_event_P6(void)
 {
-    printf("Enter the number of the event :\n\t4 -> Go to transition P7\n\t5 -> Go to transition P8\n\tother -> Error\n");
+    printf("Enter the number of the event :\n\t7 -> Go to transition P7\n\t8 -> Go to transition P8\n\tother -> Error\n");
 
     char line[LINE_SIZE];
 
@@ -204,11 +204,11 @@ eSystemEvent read_event_P6(void)
 
     switch (user_input)
     {
-        case 4:
+        case 7:
             return E7;
             break;
 
-        case 5:
+        case 8:
             return E8;
             break;
 
@@ -216,9 +216,9 @@ eSystemEvent read_event_P6(void)
         case 1:
         case 2:
         case 3:
+        case 4:
+        case 5:
         case 6:
-        case 7:
-        case 8:
         default:
             return last_Event;
             break;

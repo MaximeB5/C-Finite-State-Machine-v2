@@ -36,8 +36,8 @@ int main()
 	Transition trans_7;		initialize(&trans_7, P7, 1, NO_EVENT, ret_p3);
 	Transition trans_8;		initialize(&trans_8, P8, 1, NO_EVENT, ret_p2);
 
-
-	// Create the FSM
+	// It's now time to create your FSM thanks to the transitions you defined.
+	// To achieve this, create an array of Transition whose the size is the total number of transitions you have.
 	Transition FSM [FSM_SIZE] =
 	{
 		// Linear
@@ -66,7 +66,7 @@ int main()
 	// Init your FSM with the 1st state it'll begin with.
 	eSystemState next_state = P1;
 
-	// Working loop : that's here we implements how we wants the FSM to work.
+	// Working loop : that's here we implement how we want the FSM to work.
 	// We have 2 options at each iteration : either we have an event that must occurs, or we don't have one.
 	// This information is known thanks to the NO_EVENT value.
 	while(1)
@@ -93,7 +93,8 @@ int main()
 				
 				// Check if the event exists for the current transition, if yes, it updates the event_index for the normal scenario.
 				unsigned int i = 0;
-				for(i = 0; i < FSM[next_state]._nb_of_events; ++i) {
+				for(i = 0; i < FSM[next_state]._nb_of_events; ++i)
+				{
 					if(FSM[next_state]._events[i] == eNewEvent)
 					{
 						event_index = i;
@@ -101,7 +102,10 @@ int main()
 						// Debug.
 						printf("ok event index is '%u'\n", i);
 
+						// I want to
 						break;
+						// free
+						// https://www.youtube.com/watch?v=f4Mc-NYPHaQ&list=PLAc49vcmGBQf5VrqWzlv-4V6NzU_u1_oJ&index=28
 					}
 				}
 
@@ -116,7 +120,11 @@ int main()
 				else
 				{
 					printf("--- Invalid Event Input ---\nExit...\n\n");
+
+					// I want to
 					break;
+					// free
+					// https://www.youtube.com/watch?v=f4Mc-NYPHaQ&list=PLAc49vcmGBQf5VrqWzlv-4V6NzU_u1_oJ&index=28
 				}
 			}
 			// Else, we just call the current event handler that'll do its work before leading to the next state.
@@ -130,12 +138,16 @@ int main()
 		else
 		{
 			printf("--- Global Check failed ---\nExit...\n\n");
+			
+			// I want to
 			break;
+			// free
+			// https://www.youtube.com/watch?v=f4Mc-NYPHaQ&list=PLAc49vcmGBQf5VrqWzlv-4V6NzU_u1_oJ&index=28
 		}
 	} // End of the working loop.
 
 
-	// Free the memory of each transition
+	// Free the memory of each transition.
 	unsigned int i = 0;
 	for(i = 0; i < FSM_SIZE; ++i) {
 		destroy( &FSM[i] );
